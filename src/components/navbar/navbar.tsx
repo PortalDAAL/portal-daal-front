@@ -6,6 +6,7 @@ import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
 import { NavbarItem } from "./interfaces";
 import { Box, Typography } from "@mui/material";
 import { Link, Outlet } from "react-router-dom";
+import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
 
 const useGetNavbarItems = (): Array<NavbarItem> => {
   return [
@@ -14,6 +15,7 @@ const useGetNavbarItems = (): Array<NavbarItem> => {
     { label: "Loja", route: "store", icon: <LocalGroceryStoreRoundedIcon /> },
     { label: "Eventos", route: "events", icon: <EventRoundedIcon /> },
     { label: "Sobre", route: "about", icon: <InfoRoundedIcon /> },
+    { label: "Entrar", route: "enter", icon: <LoginOutlinedIcon /> },
   ];
 };
 
