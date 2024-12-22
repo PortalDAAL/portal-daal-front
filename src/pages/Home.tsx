@@ -6,7 +6,11 @@ const Home = (): React.ReactElement => {
   return (
     <>
       <div> first home </div>
-      {user ? <> logged! </> : <> you are not logged</>}
+      {user ? (
+        <> logadooo, bem vindo {user.username}! </>
+      ) : (
+        <> voce nao esta logado</>
+      )}
     </>
   );
 };

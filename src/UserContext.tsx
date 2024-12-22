@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { User, UserContextType } from "./interfaces/User";
+import { User, UserContextType } from "./models/User";
 
 // Criação do userContext. Inicialmente é null pois nenhum user está logado.
 export const UserContext = createContext<UserContextType | null>(null);

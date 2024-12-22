@@ -1,7 +1,9 @@
 export interface User {
+  readonly id: number;
   username: string;
   email: string;
-  createdAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
   blocked: boolean;
   token?: string;
 }

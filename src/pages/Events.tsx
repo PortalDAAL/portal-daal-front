@@ -1,6 +1,6 @@
 import constants from "../constants";
 import React, { useEffect, useState } from "react";
-import { Event } from "../interfaces/Event";
+import { Event } from "../models/Event";
 import { Box } from "@mui/material";
 
 declare interface PresentationProps {

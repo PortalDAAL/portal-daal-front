@@ -1,4 +1,5 @@
 import HomeIcon from "@mui/icons-material/Home";
+import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import LocalGroceryStoreRoundedIcon from "@mui/icons-material/LocalGroceryStoreRounded";
 import EventRoundedIcon from "@mui/icons-material/EventRounded";
@@ -7,6 +8,7 @@ import { NavbarItem } from "./interfaces";
 import { Box, Typography } from "@mui/material";
 import { Link, Outlet } from "react-router-dom";
 import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
+import { useUser } from "../../UserContext";
 
 const useGetNavbarItems = (): Array<NavbarItem> => {
   return [
@@ -28,7 +30,19 @@ declare interface PresentationProps {
  * passar para o NavbarPresentation os dados para que ele retorne um elemento HTML
  */
 const Navbar = (): React.ReactElement => {
+  const { user } = useUser();
   const navbarItems = useGetNavbarItems();
+
+  // Se existir um usuário logado, modifique o último item da navbar para o ícone de perfil.
+  if (user) {
+    const lastItem = navbarItems.find((i) => i.route === "enter");
+    if (lastItem !== undefined) {
+      lastItem.label = "";
+      lastItem.route = "user";
+      lastItem.icon = <AccountCircleRoundedIcon />;
+    }
+  }
+
   return <NavbarPresentation items={navbarItems} />;
 };
 
