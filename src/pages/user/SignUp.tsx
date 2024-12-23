@@ -1,5 +1,6 @@
-import { Box } from "@mui/material";
-import FormSignUp from "../../components/forms/form-signup";
+import { Box, Card, CardContent, Typography } from "@mui/material";
+import SignUpForm from "../../components/forms/signup-form";
+import { Link } from "react-router-dom";
 
 const SignUp = (): React.ReactElement => {
   return (
@@ -10,7 +11,14 @@ const SignUp = (): React.ReactElement => {
         alignItems: "center",
       }}
     >
-      <FormSignUp />
+      <Card>
+        <CardContent>
+          <SignUpForm />
+          <Typography variant="subtitle1">
+            Já tem uma conta? Faça seu <Link to={"/login"}> login</Link>.
+          </Typography>
+        </CardContent>
+      </Card>
     </Box>
   );
 };
