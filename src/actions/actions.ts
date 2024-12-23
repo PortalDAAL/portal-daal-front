@@ -1,6 +1,7 @@
 import axios from "axios";
 import constants from "../constants";
 import { User } from "../models/User";
+import { Event } from "../models/Event";
 
 export class Actions {
   public static postSignUp(
@@ -42,6 +43,20 @@ export class Actions {
         createdAt: res.data.user.createdAt,
         token: res.data.jwt,
       } as User;
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  }
+
+  public static async getEvents(): Promise<Event[] | null> {
+    try {
+      const res = await axios.get(constants.api.events.url);
+
+      if (res.status == 200) {
+        return res.data.data as Event[];
+      }
+      throw new Error(res.statusText);
     } catch (err) {
       console.error(err);
       return null;
