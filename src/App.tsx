@@ -14,19 +14,19 @@ import SignUp from "./pages/user/SignUp";
 import { UserProvider } from "./UserContext";
 import Login from "./pages/user/Login";
 import AddEvent from "./pages/events/AddEvent";
-import constants from "./constants";
+import { routes } from "./constants";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path={constants.routes.root} element={<Navbar />}>
+      <Route path={routes.root} element={<Navbar />}>
         <Route index element={<Home />} />
-        <Route path={constants.routes.about} element={<About />} />
-        <Route path={constants.routes.guide} element={<Guide />} />
-        <Route path={constants.routes.events} element={<Events />} />
-        <Route path={constants.routes.signup} element={<SignUp />} />
-        <Route path={constants.routes.login} element={<Login />} />
-        <Route path={constants.routes.addEvent} element={<AddEvent />} />
+        <Route path={routes.about} element={<About />} />
+        <Route path={routes.guide} element={<Guide />} />
+        <Route path={routes.events} element={<Events />} />
+        <Route path={routes.signup} element={<SignUp />} />
+        <Route path={routes.login} element={<Login />} />
+        <Route path={routes.addEvent} element={<AddEvent />} />
       </Route>
     </>
   )

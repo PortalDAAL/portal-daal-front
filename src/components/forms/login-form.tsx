@@ -3,7 +3,7 @@ import { useUser } from "../../UserContext";
 import { Actions } from "../../actions/actions";
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import constants from "../../constants";
+import { routes, texts } from "../../constants";
 
 const LoginForm = (): React.ReactElement => {
   const { login } = useUser();
@@ -24,7 +24,7 @@ const LoginForm = (): React.ReactElement => {
           console.log(user);
           if (user) {
             login(user);
-            navigate(constants.routes.root);
+            navigate(routes.root);
           }
         })
         .catch((err) => console.error(err));
@@ -80,7 +80,7 @@ const LoginForm = (): React.ReactElement => {
             sx={{
               marginY: 2,
               maxWidth: 0.5,
-              backgroundColor: constants.texts.color.primary,
+              backgroundColor: texts.color.primary,
             }}
           >
             Entrar
@@ -90,9 +90,9 @@ const LoginForm = (): React.ReactElement => {
       <Typography variant="subtitle1">
         Não tem uma conta? Clique{" "}
         <Link
-          to={constants.routes.signup}
+          to={routes.signup}
           style={{
-            color: constants.texts.color.secondary,
+            color: texts.color.secondary,
             textDecorationLine: "none",
           }}
         >

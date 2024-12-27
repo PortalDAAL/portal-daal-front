@@ -7,7 +7,7 @@ import { Box, Typography } from "@mui/material";
 import { Link, Outlet } from "react-router-dom";
 import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
 import { useUser } from "../../UserContext";
-import constants from "../../constants";
+import { routes } from "../../constants";
 
 export interface NavbarItem {
   label: string;
@@ -21,22 +21,22 @@ const useNavbarItems = (): Array<NavbarItem> => {
     { label: "Home", route: "", icon: <HomeIcon /> },
     {
       label: "Manual do Aluno",
-      route: constants.routes.guide,
+      route: routes.guide,
       icon: <MenuBookIcon />,
     },
     {
       label: "Eventos",
-      route: constants.routes.events,
+      route: routes.events,
       icon: <EventRoundedIcon />,
     },
     {
       label: "Sobre",
-      route: constants.routes.about,
+      route: routes.about,
       icon: <InfoRoundedIcon />,
     },
     {
       label: "Entrar",
-      route: constants.routes.signup,
+      route: routes.signup,
       icon: <LoginOutlinedIcon />,
     },
   ];
@@ -49,11 +49,11 @@ const Navbar = (): React.ReactElement => {
   // Se existir um usuário logado, modifique o último item da navbar para o ícone de perfil.
   if (user) {
     const lastItem = navbarItems.find(
-      (i: NavbarItem) => i.route === constants.routes.signup
+      (i: NavbarItem) => i.route === routes.signup
     );
     if (lastItem !== undefined) {
       lastItem.label = "";
-      lastItem.route = constants.routes.profile;
+      lastItem.route = routes.profile;
       lastItem.icon = <AccountCircleRoundedIcon />;
     }
   }

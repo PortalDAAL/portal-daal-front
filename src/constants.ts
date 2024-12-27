@@ -1,32 +1,32 @@
 const baseUrl: string = "http://localhost:1337/api/";
 
-export default {
-  api: {
-    signup: {
-      url: baseUrl + "auth/local/register",
-    },
-    login: {
-      url: baseUrl + "auth/local",
-    },
-    events: {
-      url: baseUrl + "events",
-    },
+export const api = {
+  signup: {
+    url: baseUrl + "auth/local/register",
   },
-  texts: {
-    bold: 700,
-    color: {
-      primary: "#0089e4",
-      secondary: "#e9791a",
-    },
+  login: {
+    url: baseUrl + "auth/local",
   },
-  routes: {
-    root: "/",
-    about: "/sobre",
-    guide: "/manual",
-    events: "/eventos",
-    addEvent: "/novo-evento",
-    signup: "/criar-conta",
-    login: "/login",
-    profile: "/perfil",
+  events: {
+    url: baseUrl + "events",
   },
+};
+
+export const texts = {
+  bold: 700,
+  color: {
+    primary: "#0089e4",
+    secondary: "#e9791a",
+  },
+};
+
+export const routes = {
+  root: "/",
+  about: "/sobre",
+  guide: "/manual",
+  events: "/eventos",
+  addEvent: "/novo-evento",
+  signup: "/criar-conta",
+  login: "/login",
+  profile: "/perfil",
 };

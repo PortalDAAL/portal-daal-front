@@ -2,7 +2,7 @@ import { Box, Card, CardContent, Typography } from "@mui/material";
 import LoginForm from "../../components/forms/login-form";
 import LoginImg from "../../images/login_img.png";
 import "./styles.css";
-import constants from "../../constants";
+import { texts } from "../../constants";
 
 const Login = (): React.ReactElement => {
   return (
@@ -33,8 +33,8 @@ const Login = (): React.ReactElement => {
           sx={{
             marginBottom: 3,
             fontSize: 20,
-            color: constants.texts.color.primary,
-            fontWeight: constants.texts.bold,
+            color: texts.color.primary,
+            fontWeight: texts.bold,
           }}
         >
           {" "}

@@ -1,6 +1,7 @@
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import SignUpForm from "../../components/forms/signup-form";
 import { Link } from "react-router-dom";
+import { routes } from "../../constants";
 
 const SignUp = (): React.ReactElement => {
   return (
@@ -15,7 +16,7 @@ const SignUp = (): React.ReactElement => {
         <CardContent>
           <SignUpForm />
           <Typography variant="subtitle1">
-            Já tem uma conta? Faça seu <Link to={"/login"}> login</Link>.
+            Já tem uma conta? Faça seu <Link to={routes.login}> login</Link>.
           </Typography>
         </CardContent>
       </Card>
