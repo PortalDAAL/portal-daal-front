@@ -1,13 +1,13 @@
 import HomeIcon from "@mui/icons-material/Home";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
-import LocalGroceryStoreRoundedIcon from "@mui/icons-material/LocalGroceryStoreRounded";
 import EventRoundedIcon from "@mui/icons-material/EventRounded";
 import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
 import { Box, Typography } from "@mui/material";
 import { Link, Outlet } from "react-router-dom";
 import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
 import { useUser } from "../../UserContext";
+import constants from "../../constants";
 
 export interface NavbarItem {
   label: string;
@@ -19,11 +19,26 @@ export interface NavbarItem {
 const useNavbarItems = (): Array<NavbarItem> => {
   return [
     { label: "Home", route: "", icon: <HomeIcon /> },
-    { label: "Manual do Aluno", route: "guide", icon: <MenuBookIcon /> },
-    { label: "Loja", route: "store", icon: <LocalGroceryStoreRoundedIcon /> },
-    { label: "Eventos", route: "events", icon: <EventRoundedIcon /> },
-    { label: "Sobre", route: "about", icon: <InfoRoundedIcon /> },
-    { label: "Entrar", route: "enter", icon: <LoginOutlinedIcon /> },
+    {
+      label: "Manual do Aluno",
+      route: constants.routes.guide,
+      icon: <MenuBookIcon />,
+    },
+    {
+      label: "Eventos",
+      route: constants.routes.events,
+      icon: <EventRoundedIcon />,
+    },
+    {
+      label: "Sobre",
+      route: constants.routes.about,
+      icon: <InfoRoundedIcon />,
+    },
+    {
+      label: "Entrar",
+      route: constants.routes.signup,
+      icon: <LoginOutlinedIcon />,
+    },
   ];
 };
 
@@ -33,10 +48,12 @@ const Navbar = (): React.ReactElement => {
 
   // Se existir um usuário logado, modifique o último item da navbar para o ícone de perfil.
   if (user) {
-    const lastItem = navbarItems.find((i: NavbarItem) => i.route === "enter");
+    const lastItem = navbarItems.find(
+      (i: NavbarItem) => i.route === constants.routes.signup
+    );
     if (lastItem !== undefined) {
       lastItem.label = "";
-      lastItem.route = "user";
+      lastItem.route = constants.routes.profile;
       lastItem.icon = <AccountCircleRoundedIcon />;
     }
   }
@@ -54,7 +71,7 @@ const Navbar = (): React.ReactElement => {
       >
         {navbarItems.map((i: NavbarItem) => {
           return (
-            <Link to={"/" + i.route} key={i.label}>
+            <Link to={i.route} key={i.label}>
               <Box
                 sx={{
                   display: "flex",

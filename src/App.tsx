@@ -10,24 +10,23 @@ import About from "./pages/About";
 import React from "react";
 import Events from "./pages/Events";
 import Guide from "./pages/Guide";
-import Store from "./pages/Store";
 import SignUp from "./pages/user/SignUp";
 import { UserProvider } from "./UserContext";
 import Login from "./pages/user/Login";
 import AddEvent from "./pages/events/AddEvent";
+import constants from "./constants";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" element={<Navbar />}>
+      <Route path={constants.routes.root} element={<Navbar />}>
         <Route index element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/store" element={<Store />} />
-        <Route path="/guide" element={<Guide />} />
-        <Route path="/events" element={<Events />}></Route>
-        <Route path="/enter" element={<SignUp />} />
-        <Route path="/addEvent" element={<AddEvent />} />
-        <Route path="/login" element={<Login />} />
+        <Route path={constants.routes.about} element={<About />} />
+        <Route path={constants.routes.guide} element={<Guide />} />
+        <Route path={constants.routes.events} element={<Events />} />
+        <Route path={constants.routes.signup} element={<SignUp />} />
+        <Route path={constants.routes.login} element={<Login />} />
+        <Route path={constants.routes.addEvent} element={<AddEvent />} />
       </Route>
     </>
   )
