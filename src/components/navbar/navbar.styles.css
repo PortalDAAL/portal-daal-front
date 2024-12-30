@@ -12,7 +12,7 @@
  * estão presentes no elemento, esse estilo é criado.
  */
 .navbar-enter-btn.MuiButton-contained, .navbar-item-selected.MuiTypography-root {
-  padding: 1px 1.2rem 1px 1.2rem;
+  padding: 3px 1.2rem 3px 1.2rem;
   background-color: white;
   border-radius: 11px;
   color: var(--royalblue);

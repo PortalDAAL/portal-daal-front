@@ -49,13 +49,14 @@ const Navbar = (): React.ReactElement => {
     <>
       <Box
         sx={{
+          width: "100%",
           display: "flex",
           flexDirection: "row",
-          justifyContent: "space-around",
+          justifyContent: "space-evenly",
           alignItems: "center",
           gap: "20px",
           marginBottom: "2rem",
-          paddingY: "0.6rem",
+          paddingY: "1rem",
           backgroundColor: colors.primary,
         }}
       >
@@ -72,6 +73,7 @@ const Navbar = (): React.ReactElement => {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
+            alignItems: "center",
             gap: "20px",
           }}
         >
@@ -87,7 +89,6 @@ const Navbar = (): React.ReactElement => {
               >
                 <Typography
                   component="li"
-                  variant="body1"
                   className={
                     // Se a página ativa é um dos links da navbar, marque esse link como selecionado.
                     location.pathname == i.route ? "navbar-item-selected" : ""
@@ -109,6 +110,7 @@ const Navbar = (): React.ReactElement => {
             variant="contained"
             className="navbar-enter-btn"
             disableElevation
+            sx={{ fontSize: "16px" }}
             onClick={() => navigate(routes.login)}
           >
             Entrar
