@@ -1,15 +1,16 @@
 import HomeIcon from "@mui/icons-material/Home";
-import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import EventRoundedIcon from "@mui/icons-material/EventRounded";
 import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
-import { Box, Typography } from "@mui/material";
-import { Link, Outlet } from "react-router-dom";
-import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
+import { Avatar, Box, Button, Typography } from "@mui/material";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../../UserContext";
-import { routes } from "../../constants";
+import { colors, routes } from "../../constants";
+import "./navbar.styles.css";
+import { blue } from "@mui/material/colors";
 
-export interface NavbarItem {
+// TODO: remover propriedade "icon" se não for mais utilizada em nenhum momento.
+interface NavbarItem {
   label: string;
   route: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -18,7 +19,7 @@ export interface NavbarItem {
 
 const useNavbarItems = (): Array<NavbarItem> => {
   return [
-    { label: "Home", route: "", icon: <HomeIcon /> },
+    { label: "Início", route: routes.root, icon: <HomeIcon /> },
     {
       label: "Manual do Aluno",
       route: routes.guide,
@@ -34,59 +35,85 @@ const useNavbarItems = (): Array<NavbarItem> => {
       route: routes.about,
       icon: <InfoRoundedIcon />,
     },
-    {
-      label: "Entrar",
-      route: routes.signup,
-      icon: <LoginOutlinedIcon />,
-    },
   ];
 };
 
 const Navbar = (): React.ReactElement => {
   const { user } = useUser();
   const navbarItems = useNavbarItems();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  // Se existir um usuário logado, modifique o último item da navbar para o ícone de perfil.
-  if (user) {
-    const lastItem = navbarItems.find(
-      (i: NavbarItem) => i.route === routes.signup
-    );
-    if (lastItem !== undefined) {
-      lastItem.label = "";
-      lastItem.route = routes.profile;
-      lastItem.icon = <AccountCircleRoundedIcon />;
-    }
-  }
-
+  // TODO: criar classes css para esses estilos mais comuns de flex?
   return (
     <>
       <Box
         sx={{
           display: "flex",
           flexDirection: "row",
-          justifyContent: "center",
+          justifyContent: "space-around",
+          alignItems: "center",
           gap: "20px",
-          marginY: "2rem",
+          marginBottom: "2rem",
+          paddingY: "0.6rem",
+          backgroundColor: colors.primary,
         }}
       >
-        {navbarItems.map((i: NavbarItem) => {
-          return (
-            <Link to={i.route} key={i.label}>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "center",
-                  alignSelf: "center",
-                  gap: "5px",
+        <Link to={routes.root} className="navbar-link">
+          <Avatar
+            src="/src/images/logo_daal.jpeg"
+            variant="square"
+            alt="Logo DAAL"
+            sx={{ width: 56, height: 56, borderRadius: 2 }}
+          />
+        </Link>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            gap: "20px",
+          }}
+        >
+          {navbarItems.map((i: NavbarItem) => {
+            return (
+              <Link
+                to={i.route}
+                key={i.label}
+                className="navbar-link"
+                style={{
+                  color: "white",
                 }}
               >
-                {i.icon}
-                <Typography component="p">{i.label}</Typography>
-              </Box>
-            </Link>
-          );
-        })}
+                <Typography
+                  component="li"
+                  variant="body1"
+                  className={
+                    // Se a página ativa é um dos links da navbar, marque esse link como selecionado.
+                    location.pathname == i.route ? "navbar-item-selected" : ""
+                  }
+                >
+                  {i.label}
+                </Typography>
+              </Link>
+            );
+          })}
+        </Box>
+
+        {user ? (
+          <Avatar sx={{ bgcolor: blue[900] }}>
+            {user.username.charAt(0).toUpperCase()}
+          </Avatar>
+        ) : (
+          <Button
+            variant="contained"
+            className="navbar-enter-btn"
+            disableElevation
+            onClick={() => navigate(routes.login)}
+          >
+            Entrar
+          </Button>
+        )}
       </Box>
       <Outlet />
     </>

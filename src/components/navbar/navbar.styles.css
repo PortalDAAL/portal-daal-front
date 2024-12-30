@@ -1,0 +1,20 @@
+@import url(/src/global.css);
+
+
+.navbar-link {
+  text-decoration: none;
+  list-style: none;
+}
+
+/* OBS.: Ao invés de usar !important em tudo, crio um seletor combinado
+ * que tem prioridade maior que o do MUI e o próprio do projeto.
+ * Ele não aparece diretamente no DOM, mas como ambos os seletores
+ * estão presentes no elemento, esse estilo é criado.
+ */
+.navbar-enter-btn.MuiButton-contained, .navbar-item-selected.MuiTypography-root {
+  padding: 1px 1.2rem 1px 1.2rem;
+  background-color: white;
+  border-radius: 11px;
+  color: var(--royalblue);
+  font-weight: bold;
+}
