@@ -51,7 +51,7 @@ export class Actions {
 
   public static async getEvents(): Promise<Event[] | null> {
     try {
-      const res = await axios.get(api.events.url);
+      const res = await axios.get(api.events.url + "?populate=poster");
 
       if (res.status == 200) {
         return res.data.data as Event[];
