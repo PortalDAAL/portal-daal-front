@@ -20,6 +20,11 @@ export const texts = {
   },
 };
 
+export const colors = {
+  primary: "#6aacd4",
+  secondary: "#e9791a",
+};
+
 export const routes = {
   root: "/",
   about: "/sobre",

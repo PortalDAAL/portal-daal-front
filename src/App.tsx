@@ -15,6 +15,8 @@ import { UserProvider } from "./UserContext";
 import Login from "./pages/user/Login";
 import AddEvent from "./pages/events/AddEvent";
 import { routes } from "./constants";
+import { createTheme, CssBaseline } from "@mui/material";
+import { ThemeProvider } from "@emotion/react";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,10 +34,27 @@ const router = createBrowserRouter(
   )
 );
 
+const theme = createTheme({
+  typography: {
+    // Para textos em geral, fonte Inter
+    fontFamily: "Inter, Arial, Helvetica, sans-serif",
+    // Para títulos maiores, fonte Poppins
+    h1: {
+      fontFamily: "Poppins, Arial, Helvetica, sans-serif",
+    },
+    h2: {
+      fontFamily: "Poppins, Arial, Helvetica, sans-serif",
+    },
+  },
+});
+
 const App = (): React.ReactElement => {
   return (
     <UserProvider>
-      <RouterProvider router={router} />
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </UserProvider>
   );
 };
