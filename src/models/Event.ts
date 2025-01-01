@@ -2,6 +2,7 @@ export type EventPoster = {
   url: string;
   size: number;
   name: string;
+  hash: string;
   ext?: string;
 };
 

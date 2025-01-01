@@ -1,23 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { Event } from "../models/Event";
-import { Box, Button } from "@mui/material";
-import { Actions } from "../actions/actions";
+import React from "react";
+import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useUser } from "../UserContext";
+import EventsList from "../components/events/events-list";
+import EventsTitle from "../components/events/events-title";
 
 const Events = (): React.ReactElement => {
   const { user } = useUser();
-  const [events, setEvents] = useState<Event[]>([]);
-
-  // O useEffect faz com que assim que a página seja carregada ele busque no Strapi os eventos
-  useEffect(() => {
-    Actions.getEvents()
-      .then((events) => setEvents(events ?? [])) // o operador ?? diz que se events for nulo, use []
-      .catch((err) => console.error(err));
-  }, []);
 
   return (
-    <>
+    <div className="container">
       {user && (
         <>
           <Link to={"/addEvent"}>
@@ -25,13 +17,10 @@ const Events = (): React.ReactElement => {
           </Link>
         </>
       )}
+      <EventsTitle />
 
-      {events.map((e: Event) => (
-        <Box key={e.id}>
-          {e.title} - {e.description} - {e.date.toString()}
-        </Box>
-      ))}
-    </>
+      <EventsList />
+    </div>
   );
 };
 
