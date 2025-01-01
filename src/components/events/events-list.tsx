@@ -4,7 +4,7 @@ import { Event } from "../../models/Event";
 import { Box, Divider, Typography } from "@mui/material";
 import EventCard from "./event-card";
 import { getFormattedDate } from "../../helpers";
-import { api } from "../../constants";
+import { api, colors } from "../../constants";
 
 const EventsSection = ({ title, data }: { title: string; data: Event[] }) => {
   const hasEvents: boolean = data && data.length > 0;
@@ -17,7 +17,15 @@ const EventsSection = ({ title, data }: { title: string; data: Event[] }) => {
         alignItems: "center",
       }}
     >
-      <Typography fontSize={24} marginBottom={"1rem"}>
+      <Typography
+        variant="h2"
+        component={"h2"}
+        fontSize={24}
+        marginBottom={"1rem"}
+        textTransform={"uppercase"}
+        fontWeight={"bold"}
+        color={colors.darkBlue}
+      >
         {title}
       </Typography>
 
@@ -54,11 +62,11 @@ const EventsList = (): React.ReactElement => {
   const closedEvents: Event[] = events.filter((e) => !e.active);
 
   return (
-    <>
+    <Box marginTop={3}>
       <EventsSection title="Eventos abertos" data={openEvents} />
       <Divider sx={{ marginY: "3rem" }} />
       <EventsSection title="Eventos fechados" data={closedEvents} />
-    </>
+    </Box>
   );
 };
 

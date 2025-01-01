@@ -1,4 +1,4 @@
-import { Box, Card, CardMedia, Typography } from "@mui/material";
+import { Avatar, Box, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import { colors } from "../../constants";
@@ -23,18 +23,16 @@ const EventCard = ({
   // TODO: criar arquivo .css para esses estilos
   return (
     <Link to={""} style={{ textDecoration: "none", width: "32%" }}>
-      <Card
-        elevation={0}
+      <Box
         sx={{
           display: "flex",
           bgcolor: isOpen ? "white" : colors.primary,
-          border: "2px solid",
-          borderRadius: "1%",
+          border: "3px solid",
+          borderRadius: 5,
           borderColor: isOpen ? colors.darkBlue : "white",
           height: "10rem",
           justifyContent: "space-around",
           alignItems: "center",
-          paddingX: "10px",
         }}
       >
         <Box
@@ -42,27 +40,38 @@ const EventCard = ({
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
+            marginLeft: "2rem",
           }}
         >
           <Typography
+            variant="h2"
+            fontSize={24}
             component="h3"
-            sx={{ fontWeight: "bold", fontSize: "18" }}
+            fontWeight={"bold"}
+            color={colors.darkBlue}
           >
             {title}
           </Typography>
-          <Typography variant="subtitle1">Data: {date}</Typography>
+          <Typography variant="subtitle1" color={colors.darkBlue} marginTop={1}>
+            Data: {date}
+          </Typography>
         </Box>
-        <CardMedia
-          component="img"
-          alt={imgAltText ?? "Foto do evento"}
-          src={imgUrl}
+        <Box
           sx={{
-            maxWidth: "10rem",
-            maxHeight: "8rem",
-            borderRadius: "30%",
+            borderRadius: 1,
+            marginRight: "1rem",
           }}
-        ></CardMedia>
-      </Card>
+        >
+          <Avatar
+            alt={imgAltText ?? "Foto do evento"}
+            src={imgUrl}
+            sx={{
+              width: 128,
+              height: 128,
+            }}
+          ></Avatar>
+        </Box>
+      </Box>
     </Link>
   );
 };
