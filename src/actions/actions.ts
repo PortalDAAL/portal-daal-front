@@ -62,4 +62,18 @@ export class Actions {
       return null;
     }
   }
+
+  public static async getEvent(eventId: string): Promise<Event | null> {
+    try {
+      const res = await axios.get(api.events.url + "/" + eventId);
+
+      if (res.status == 200) {
+        return res.data.data as Event;
+      }
+      throw new Error(res.statusText);
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  }
 }

@@ -1,12 +1,11 @@
 import { Avatar, Box, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
-import { colors } from "../../constants";
+import { colors, routes } from "../../constants";
 import "./event-card.styles.css";
 
 interface EventCardProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  key: any;
+  readonly id: string;
   title: string;
   date: string;
   isOpen?: boolean;
@@ -15,6 +14,7 @@ interface EventCardProps {
 }
 
 const EventCard = ({
+  id,
   title,
   date,
   isOpen,
@@ -22,10 +22,11 @@ const EventCard = ({
   imgAltText,
 }: EventCardProps): React.ReactElement => {
   const colorFont: string = isOpen ? colors.darkBlue : "white";
+  const route: string = routes.eventDetails.replace(":id", id);
 
   return (
     <Link
-      to={""}
+      to={route}
       style={{
         textDecoration: "none",
         width: "32%",

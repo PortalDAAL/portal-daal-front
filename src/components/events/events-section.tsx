@@ -41,7 +41,7 @@ const EventsSection = ({ title, data }: EventsSectionProps) => {
 
             return (
               <EventCard
-                key={ev.id}
+                id={ev.documentId}
                 title={ev.title}
                 isOpen={ev.active}
                 date={getFormattedDate(ev.date)}
