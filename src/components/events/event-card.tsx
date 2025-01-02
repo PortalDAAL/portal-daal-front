@@ -2,6 +2,7 @@ import { Avatar, Box, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import { colors } from "../../constants";
+import "./event-card.styles.css";
 
 interface EventCardProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -20,48 +21,43 @@ const EventCard = ({
   imgUrl,
   imgAltText,
 }: EventCardProps): React.ReactElement => {
-  // TODO: criar arquivo .css para esses estilos
+  const colorFont: string = isOpen ? colors.darkBlue : "white";
+
   return (
-    <Link to={""} style={{ textDecoration: "none", width: "32%" }}>
+    <Link
+      to={""}
+      style={{
+        textDecoration: "none",
+        width: "32%",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
       <Box
+        className="card"
         sx={{
-          display: "flex",
           bgcolor: isOpen ? "white" : colors.primary,
-          border: "3px solid",
           borderRadius: 5,
           borderColor: isOpen ? colors.darkBlue : "white",
-          height: "10rem",
-          justifyContent: "space-around",
-          alignItems: "center",
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            marginLeft: "2rem",
-          }}
-        >
+        <Box className="card-info">
           <Typography
             variant="h2"
-            fontSize={24}
             component="h3"
-            fontWeight={"bold"}
-            color={colors.darkBlue}
+            sx={{
+              fontSize: 24,
+              fontWeight: "bold",
+              color: colorFont,
+            }}
           >
             {title}
           </Typography>
-          <Typography variant="subtitle1" color={colors.darkBlue} marginTop={1}>
+          <Typography variant="subtitle1" sx={{ color: colorFont, mt: 1 }}>
             Data: {date}
           </Typography>
         </Box>
-        <Box
-          sx={{
-            borderRadius: 1,
-            marginRight: "1rem",
-          }}
-        >
+        <Box className="card-cover">
           <Avatar
             alt={imgAltText ?? "Foto do evento"}
             src={imgUrl}
