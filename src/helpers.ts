@@ -1,3 +1,5 @@
+import { api } from "./constants";
+
 /**
  * Formata uma data de qualquer padrão para "dd/mm/yyyy".
  * @param date Um parâmetro do tipo Date ou string que representa a data.
@@ -12,4 +14,8 @@ export function getFormattedDate(date: Date | string): string {
   }
 
   return `${day}/${date.getMonth() + 1}/${date.getFullYear()}`;
+}
+
+export function getCompleteUrlFromImg(relativeUrl: string): string {
+  return api.base.replace("/api/", "") + relativeUrl;
 }

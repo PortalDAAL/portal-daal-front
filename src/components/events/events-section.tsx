@@ -1,8 +1,8 @@
 import { Event } from "../../models/Event";
 import { Box, Typography } from "@mui/material";
 import EventCard from "./event-card";
-import { getFormattedDate } from "../../helpers";
-import { api, colors } from "../../constants";
+import { getCompleteUrlFromImg, getFormattedDate } from "../../helpers";
+import { colors } from "../../constants";
 
 interface EventsSectionProps {
   title: string;
@@ -36,8 +36,7 @@ const EventsSection = ({ title, data }: EventsSectionProps) => {
 
       {hasEvents
         ? data?.map((ev: Event) => {
-            const imgUrl: string =
-              api.base.replace("/api/", "") + ev.poster.url;
+            const imgUrl: string = getCompleteUrlFromImg(ev.poster.url);
 
             return (
               <EventCard
