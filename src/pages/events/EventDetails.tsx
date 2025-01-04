@@ -4,12 +4,10 @@ import { Actions } from "../../actions/actions";
 import { Event } from "../../models/Event";
 import ReturnSection from "../../components/dividers/return-section";
 import { routes } from "../../constants";
-import { Box, List, ListItem, Typography } from "@mui/material";
-import { getCompleteUrlFromImg, getFormattedDate } from "../../helpers";
-import SubscribeButton from "../../components/buttons/subscribe-button";
+import { Typography } from "@mui/material";
 import { useUser } from "../../UserContext";
-import "./EventDetails.styles.css";
 import EventDetailsSection from "../../components/events/event-details-section";
+import EventDetailsHeader from "../../components/events/event-details-header";
 
 const EventDetails = (): React.ReactElement => {
   const { id } = useParams();
@@ -36,44 +34,7 @@ const EventDetails = (): React.ReactElement => {
       </div>
       {event ? (
         <>
-          <div className="container">
-            <Box className="flex-row" sx={{ marginTop: 3, gap: "1rem" }}>
-              <Box
-                maxWidth={"50%"}
-                component={"img"}
-                src={getCompleteUrlFromImg(event.poster.url)}
-              ></Box>
-              <Box
-                className="flex-column"
-                maxWidth={"50%"}
-                sx={{ justifyContent: "center", alignItems: "center" }}
-              >
-                <Typography variant="h2" className="event-title">
-                  {event.title}
-                </Typography>
-                <List sx={{ alignSelf: "start" }}>
-                  {event.startInscriptions && event.endInscriptions && (
-                    <ListItem>
-                      Período de Inscrições:{" "}
-                      {getFormattedDate(event.startInscriptions)} até{" "}
-                      {getFormattedDate(event.endInscriptions)}{" "}
-                    </ListItem>
-                  )}
-                  <ListItem> Data: {getFormattedDate(event.date)} </ListItem>
-                  <ListItem> Vagas: </ListItem>
-                  <ListItem> Valor: </ListItem>
-                  <ListItem> Local: {event.place} </ListItem>
-                </List>
-                {user && (
-                  <SubscribeButton
-                    label="Inscreva-se"
-                    variant="outlined"
-                    className="subscribe-event-btn"
-                  />
-                )}
-              </Box>
-            </Box>
-          </div>
+          <EventDetailsHeader eventData={event} isUserLogged={user != null} />
           <EventDetailsSection
             title={"Descrição"}
             data={event.description}
