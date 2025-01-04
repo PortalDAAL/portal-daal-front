@@ -66,11 +66,12 @@ export class Actions {
   public static async getEvent(eventId: string): Promise<Event | null> {
     try {
       const res = await axios.get(
-        api.events.url + "/" + eventId + "?populate=poster"
+        api.events.url + "?filters[slug][$eq]=" + eventId + "&populate=*"
       );
 
       if (res.status == 200) {
-        return res.data.data as Event;
+        const events = res.data.data as Event[];
+        return events.pop() as Event;
       }
       throw new Error(res.statusText);
     } catch (err) {

@@ -7,7 +7,6 @@ export type EventPoster = {
 };
 
 export interface Event {
-  readonly documentId: string;
   readonly id: number;
   title: string;
   date: Date;
@@ -17,4 +16,5 @@ export interface Event {
   startInscriptions?: Date;
   endInscriptions?: Date;
   active: boolean;
+  slug: string;
 }

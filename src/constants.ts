@@ -31,7 +31,7 @@ export const routes = {
   about: "/sobre",
   guide: "/manual",
   events: "/eventos",
-  eventDetails: "/evento/:id",
+  eventDetails: "/eventos/:slug",
   signup: "/criar-conta",
   login: "/login",
   profile: "/perfil",

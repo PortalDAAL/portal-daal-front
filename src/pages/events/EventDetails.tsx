@@ -10,20 +10,23 @@ import EventDetailsSection from "../../components/events/event-details-section";
 import EventDetailsHeader from "../../components/events/event-details-header";
 
 const EventDetails = (): React.ReactElement => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const { user } = useUser();
-  const [event, setEvent] = useState<Event | null>();
+  const [event, setEvent] = useState<Event | null>(null);
 
   useEffect(() => {
-    Actions.getEvent(id ?? "")
-      .then((event) => setEvent(event))
+    Actions.getEvent(slug ?? "")
+      .then((event) => {
+        setEvent(event);
+        console.log("event no useEffect: ", event);
+      })
       .catch((err) => console.error(err));
-  }, [id]);
+  }, [slug]);
 
-  // TODO: criar componentes!!!!!
   // a classe container só está marcando os elementos que devem ter um espaço das bordas da página
   // ela deveria marcar toda a página. contudo, como tem esses titulos de seções que devem
   // estar colados (como "Descrição"), ai to limitando somente em algumas áreas
+  console.log("evento selecionado: ", event);
   return (
     <>
       <div className="container">
@@ -32,9 +35,9 @@ const EventDetails = (): React.ReactElement => {
           previousPageLink={routes.events}
         />
       </div>
-      {event ? (
+      {event !== undefined && event !== null ? (
         <>
-          <EventDetailsHeader eventData={event} isUserLogged={user != null} />
+          <EventDetailsHeader event={event} isUserLogged={user != null} />
           <EventDetailsSection
             title={"Descrição"}
             data={event.description}

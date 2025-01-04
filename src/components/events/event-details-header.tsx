@@ -5,41 +5,48 @@ import { getCompleteUrlFromImg, getFormattedDate } from "../../helpers";
 import "./event-details-header.styles.css";
 
 interface EventDetailsHeaderProps {
-  eventData: Event;
+  event: Event;
   isUserLogged: boolean;
 }
 
 const EventDetailsHeader = ({
-  eventData,
+  event,
   isUserLogged,
 }: EventDetailsHeaderProps): React.ReactElement => {
   return (
     <div className="container">
-      <Box className="flex-row" sx={{ marginTop: 3, gap: "1rem" }}>
-        <Box
-          maxWidth={"50%"}
-          component={"img"}
-          src={getCompleteUrlFromImg(eventData.poster.url)}
-          alt={"Foto do evento " + eventData.poster.name}
-        ></Box>
-        <Box
-          className="flex-column"
-          maxWidth={"50%"}
-          sx={{ justifyContent: "center", alignItems: "center" }}
-        >
+      <Box className="flex-row header-wrapper" sx={{ marginY: 3, gap: "1rem" }}>
+        {
+          event.poster && (
+            <img
+              className="header-img"
+              style={{ maxWidth: "50%" }}
+              src={getCompleteUrlFromImg(event.poster.url)}
+              alt={"Foto do evento " + event.poster.name}
+            ></img>
+          ) /* : (
+          <Skeleton
+            className="header-img"
+            variant="rounded"
+            animation={false}
+            height={190}
+          />
+        ) */
+        }
+        <Box className="flex-column header-info">
           <Typography variant="h2" className="event-title">
-            {eventData.title}
+            {event.title}
           </Typography>
-          <List sx={{ alignSelf: "start" }}>
-            {eventData.startInscriptions && eventData.endInscriptions && (
+          <List className="header-info-list">
+            {event.startInscriptions && event.endInscriptions && (
               <ListItem disableGutters>
                 <strong>Período de Inscrições</strong>:{" "}
-                {getFormattedDate(eventData.startInscriptions)} até{" "}
-                {getFormattedDate(eventData.endInscriptions)}{" "}
+                {getFormattedDate(event.startInscriptions)} até{" "}
+                {getFormattedDate(event.endInscriptions)}{" "}
               </ListItem>
             )}
             <ListItem disableGutters>
-              <strong>Data</strong>: {getFormattedDate(eventData.date)}{" "}
+              <strong>Data</strong>: {getFormattedDate(event.date)}{" "}
             </ListItem>
             <ListItem disableGutters>
               {" "}
@@ -51,7 +58,7 @@ const EventDetailsHeader = ({
             </ListItem>
             <ListItem disableGutters>
               {" "}
-              <strong>Local</strong>: {eventData.place}{" "}
+              <strong>Local</strong>: {event.place}{" "}
             </ListItem>
           </List>
           {isUserLogged && (

@@ -22,7 +22,7 @@ const EventCard = ({
   imgAltText,
 }: EventCardProps): React.ReactElement => {
   const colorFont: string = isOpen ? colors.darkBlue : "white";
-  const route: string = routes.eventDetails.replace(":id", id);
+  const route: string = routes.eventDetails.replace(":slug", id);
 
   return (
     <Link
