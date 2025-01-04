@@ -1,4 +1,4 @@
-import { api } from "./constants";
+import { api, routes } from "./constants";
 
 /**
  * Formata uma data de qualquer padrão para "dd/mm/yyyy".
@@ -18,4 +18,28 @@ export function getFormattedDate(date: Date | string): string {
 
 export function getCompleteUrlFromImg(relativeUrl: string): string {
   return api.base.replace("/api/", "") + relativeUrl;
+}
+
+/**
+ * Determina se a rota da página atual é (ou pertence a) uma rota da navbar.
+ * @param currentRoute Rota da página atual.
+ * @param navRoute Rota da navbar.
+ * @returns Booleano
+ */
+export function isNavRouteActive(
+  currentRoute: string,
+  navRoute: string
+): boolean {
+  if (navRoute == currentRoute) return true;
+
+  currentRoute = currentRoute
+    .replace("/", "")
+    .replace("/", "")
+    .replace("/", "");
+
+  if (navRoute != routes.root) navRoute = navRoute.replace("/", "");
+
+  if (currentRoute.includes(navRoute)) return true;
+
+  return false;
 }
