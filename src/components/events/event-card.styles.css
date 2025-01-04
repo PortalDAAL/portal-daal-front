@@ -1,0 +1,33 @@
+.card {
+  display: flex;
+  border: 3px solid;
+  height: 10rem;
+  justify-content: space-around;
+  align-items: center;
+  min-width: 40rem;
+  max-width: 50rem;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 2rem;
+  width: 100%;
+}
+
+.card-cover {
+  border-radius: 4px;
+  margin-right: 2rem;
+}
+
+@media only screen and (max-width: 1024px) {
+  .card-cover {
+    display: none;
+  }
+
+  .card-info {
+    margin-left: 1rem;
+    align-items: center;
+  }
+}

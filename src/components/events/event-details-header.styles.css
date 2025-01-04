@@ -1,0 +1,61 @@
+.event-title.MuiTypography-root {
+  text-transform: uppercase;
+  color: var(--royalblue);
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.subscribe-event-btn.MuiButton-root {
+  border-radius: 50px;
+  color: var(--royalblue);
+  font-weight: bold;
+  border: 3px solid;
+  border-color: var(--royalblue);
+  align-self: center;
+}
+
+.header-wrapper.MuiBox-root {
+  align-items: center;
+}
+
+.header-img {
+  max-width: 30rem;
+  max-height: 30rem;
+  width: 50%;
+  height: 50%;
+}
+
+.header-info.MuiBox-root {
+  min-width: 50%;
+  width: 100%;
+}
+
+.header-info-list {
+  align-self: flex-start;
+}
+
+/* Responsividade: 
+  - Some com a imagem
+  - Alinha as informações ao centro
+*/
+@media only screen and (max-width: 800px) {
+  .header-img {
+    display: none;
+  }
+
+  .header-info.MuiBox-root {
+    max-width: 100%;
+  }
+
+  .header-info-list {
+    align-self: center;
+  }
+
+  .header-wrapper.MuiBox-root {
+    flex-direction: column;
+  }
+
+  .event-title.MuiTypography-root {
+    align-self: center;
+  }
+}

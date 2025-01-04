@@ -8,6 +8,7 @@ import { useUser } from "../../UserContext";
 import { colors, routes } from "../../constants";
 import "./navbar.styles.css";
 import { blue } from "@mui/material/colors";
+import { isNavRouteActive } from "../../helpers";
 
 // TODO: remover propriedade "icon" se não for mais utilizada em nenhum momento.
 interface NavbarItem {
@@ -91,7 +92,10 @@ const Navbar = (): React.ReactElement => {
                   component="li"
                   className={
                     // Se a página ativa é um dos links da navbar, marque esse link como selecionado.
-                    location.pathname == i.route ? "navbar-item-selected" : ""
+                    // location.pathname.includes(i.route)
+                    isNavRouteActive(location.pathname, i.route)
+                      ? "navbar-item-selected"
+                      : ""
                   }
                 >
                   {i.label}

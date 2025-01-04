@@ -51,10 +51,27 @@ export class Actions {
 
   public static async getEvents(): Promise<Event[] | null> {
     try {
-      const res = await axios.get(api.events.url);
+      const res = await axios.get(api.events.url + "?populate=poster");
 
       if (res.status == 200) {
         return res.data.data as Event[];
+      }
+      throw new Error(res.statusText);
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+  }
+
+  public static async getEvent(eventId: string): Promise<Event | null> {
+    try {
+      const res = await axios.get(
+        api.events.url + "?filters[slug][$eq]=" + eventId + "&populate=*"
+      );
+
+      if (res.status == 200) {
+        const events = res.data.data as Event[];
+        return events.pop() as Event;
       }
       throw new Error(res.statusText);
     } catch (err) {

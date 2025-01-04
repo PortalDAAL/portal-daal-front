@@ -1,37 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { Event } from "../models/Event";
-import { Box, Button } from "@mui/material";
+import { Box, Divider } from "@mui/material";
+import PageTitle from "../components/page-title/page-title";
 import { Actions } from "../actions/actions";
-import { Link } from "react-router-dom";
-import { useUser } from "../UserContext";
+import { Event } from "../models/Event";
+import EventsSection from "../components/events/events-section";
 
 const Events = (): React.ReactElement => {
-  const { user } = useUser();
   const [events, setEvents] = useState<Event[]>([]);
 
-  // O useEffect faz com que assim que a página seja carregada ele busque no Strapi os eventos
   useEffect(() => {
     Actions.getEvents()
       .then((events) => setEvents(events ?? [])) // o operador ?? diz que se events for nulo, use []
       .catch((err) => console.error(err));
   }, []);
 
-  return (
-    <>
-      {user && (
-        <>
-          <Link to={"/addEvent"}>
-            <Button> Cadastrar Evento </Button>
-          </Link>
-        </>
-      )}
+  const openEvents: Event[] = events.filter((e) => e.active);
+  const closedEvents: Event[] = events.filter((e) => !e.active);
 
-      {events.map((e: Event) => (
-        <Box key={e.id}>
-          {e.title} - {e.description} - {e.date.toString()}
-        </Box>
-      ))}
-    </>
+  return (
+    <div className="container">
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "flex-end",
+        }}
+      >
+        <PageTitle text="Eventos" orientation="flex-start" />
+      </Box>
+      <Box marginTop={3}>
+        <EventsSection title="Eventos abertos" data={openEvents} />
+        <Divider sx={{ marginY: "3rem" }} />
+        <EventsSection title="Eventos fechados" data={closedEvents} />
+      </Box>
+    </div>
   );
 };
 

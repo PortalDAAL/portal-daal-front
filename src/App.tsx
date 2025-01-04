@@ -13,10 +13,11 @@ import Guide from "./pages/Guide";
 import SignUp from "./pages/user/SignUp";
 import { UserProvider } from "./UserContext";
 import Login from "./pages/user/Login";
-import AddEvent from "./pages/events/AddEvent";
 import { routes } from "./constants";
 import { createTheme, CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
+import EventDetails from "./pages/events/EventDetails";
+import "./global.css";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,7 +29,7 @@ const router = createBrowserRouter(
         <Route path={routes.events} element={<Events />} />
         <Route path={routes.signup} element={<SignUp />} />
         <Route path={routes.login} element={<Login />} />
-        <Route path={routes.addEvent} element={<AddEvent />} />
+        <Route path={routes.eventDetails} element={<EventDetails />} />
       </Route>
     </>
   )
