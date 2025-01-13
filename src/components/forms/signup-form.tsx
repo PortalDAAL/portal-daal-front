@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import { useUser } from "../../UserContext";
 import { Actions } from "../../actions/actions";
 import { Box, Button, TextField } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { routes } from "../../constants";
 
 const SignUpForm = (): React.ReactElement => {
   const { login } = useUser();
+  const navigate = useNavigate();
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [passwd, setPasswd] = useState<string>("");
@@ -17,6 +20,7 @@ const SignUpForm = (): React.ReactElement => {
             .then((res) => {
               if (res) {
                 login(res);
+                navigate(routes.root);
               }
             })
             .catch((err) => console.error("Erro ao logar: ", err));

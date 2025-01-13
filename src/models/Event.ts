@@ -7,6 +7,7 @@ export type EventPoster = {
 };
 
 export interface Event {
+  readonly documentId: string;
   readonly id: number;
   title: string;
   date: Date;

@@ -64,6 +64,7 @@ const EventDetailsHeader = ({
           {isUserLogged && (
             <SubscribeButton
               label="Inscreva-se"
+              eventId={event.documentId}
               variant="outlined"
               className="subscribe-event-btn"
             />

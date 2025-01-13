@@ -2,9 +2,11 @@ import { ButtonOwnProps, SxProps } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import React, { useState } from "react";
 import { useUser } from "../../UserContext";
+import { Actions } from "../../actions/actions";
 
 interface SubscribeButtonProps {
   label: string;
+  eventId: string;
   variant: ButtonOwnProps["variant"];
   className?: string;
   sx?: SxProps;
@@ -12,6 +14,7 @@ interface SubscribeButtonProps {
 
 const SubscribeButton = ({
   label,
+  eventId,
   variant,
   className,
   sx,
@@ -22,11 +25,13 @@ const SubscribeButton = ({
 
   // TODO: implementar operação de vincular usuário a evento
   const handleClick = (): void => {
-    setLoading(true);
-    setTimeout(async () => {
-      console.log(user);
+    if (user) {
+      setLoading(true);
+      Actions.subscribeUserOnEvent(eventId, user)
+        .then((res) => console.log(res))
+        .catch((err) => console.error(err));
       setLoading(false);
-    }, 5000);
+    }
   };
 
   return (
