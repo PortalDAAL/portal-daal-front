@@ -27,3 +27,10 @@ html {
 .no-decoration {
   text-decoration: none;
 }
+
+.divider_subtitle.MuiDivider-root {
+  margin: 0.5rem 0 ;
+  border-color: #013476;
+  border-width: 0.1rem;
+  width: 50vw
+}
