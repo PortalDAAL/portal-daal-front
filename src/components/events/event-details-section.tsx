@@ -21,14 +21,20 @@ const EventDetailsSection = ({
         className="flex-row"
         sx={{
           justifyContent: "flex-end",
-          maxWidth: "calc(47px + 14.5%)",
+          width: "325px",
           padding: "1rem",
           background: colors.darkBlue,
           borderTopRightRadius: 50,
           borderBottomRightRadius: 50,
         }}
       >
-        <Typography variant="h2" className="section-title">
+        <Typography
+          variant="h2"
+          className="section-title"
+          sx={{
+            paddingLeft: "350px",
+          }}
+        >
           {title}
         </Typography>
       </Box>

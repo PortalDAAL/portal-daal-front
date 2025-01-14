@@ -21,7 +21,7 @@ const EventCard = ({
   imgUrl,
   imgAltText,
 }: EventCardProps): React.ReactElement => {
-  const colorFont: string = isOpen ? colors.darkBlue : "white";
+  const colorFont: string = isOpen ? "white" : colors.darkBlue;
   const route: string = routes.eventDetails.replace(":slug", id);
 
   return (
@@ -37,9 +37,9 @@ const EventCard = ({
       <Box
         className="card"
         sx={{
-          bgcolor: isOpen ? "white" : colors.primary,
+          bgcolor: isOpen ? colors.darkBlue : "white",
           borderRadius: 5,
-          borderColor: isOpen ? colors.darkBlue : "white",
+          borderColor: isOpen ? "white" : colors.darkBlue,
         }}
       >
         <Box className="card-info">

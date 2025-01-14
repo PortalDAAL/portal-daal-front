@@ -56,7 +56,7 @@ const Navbar = (): React.ReactElement => {
           justifyContent: "space-evenly",
           alignItems: "center",
           gap: "20px",
-          marginBottom: "2rem",
+          marginBottom: "1rem",
           paddingY: "1rem",
           backgroundColor: colors.primary,
         }}
