@@ -18,14 +18,34 @@ const Events = (): React.ReactElement => {
   const closedEvents: Event[] = events.filter((e) => !e.active);
 
   return (
-    <div className="container">
+    <div>
       <Box
         sx={{
           display: "flex",
-          justifyContent: "flex-end",
+          justifyContent: "center",
+          alignItems: "center",
+          margin: "0",
+          position: "relative",
+          backgroundImage: 'url("src/images/fundo_titulo_events1.jpeg")',
+          backgroundSize: "contain",
+          width: "100%",
+          height: "44.01vh",
+          backgroundRepeat: "no-repeat",
         }}
       >
-        <PageTitle text="Eventos" orientation="flex-start" />
+        <Box
+          sx={{
+            color: "#013476",
+            fontFamily: "poppins",
+            fontSize: "2em",
+            fontWeight: "bold",
+            textAlign: "center",
+            letterSpacing: "0.1em",
+            WebkitTextStroke: "2px #013476",
+          }}
+        >
+          EVENTOS
+        </Box>
       </Box>
       <Box marginTop={3}>
         <EventsSection title="Eventos abertos" data={openEvents} />
