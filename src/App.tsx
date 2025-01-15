@@ -4,7 +4,6 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import Navbar from "./components/navbar/navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import React from "react";
@@ -18,11 +17,12 @@ import { createTheme, CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
 import EventDetails from "./pages/events/EventDetails";
 import "./global.css";
+import Layout from "./pages/Layout";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path={routes.root} element={<Navbar />}>
+      <Route path={routes.root} element={<Layout />}>
         <Route index element={<Home />} />
         <Route path={routes.about} element={<About />} />
         <Route path={routes.guide} element={<Guide />} />
@@ -46,6 +46,10 @@ const theme = createTheme({
     h2: {
       fontFamily: "Poppins, Arial, Helvetica, sans-serif",
     },
+  },
+  palette: {
+    primary: { main: "#013476", contrastText: "white" },
+    secondary: { main: "#6aacd4", contrastText: "white" },
   },
 });
 

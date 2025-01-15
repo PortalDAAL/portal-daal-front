@@ -1,5 +1,4 @@
-import { Box, SxProps, Typography } from "@mui/material";
-import { colors } from "../../constants";
+import { Box, SxProps, Typography, useTheme } from "@mui/material";
 import "./event-details-section.styles.css";
 
 interface EventDetailsSection {
@@ -13,6 +12,7 @@ const EventDetailsSection = ({
   data,
   sx,
 }: EventDetailsSection): React.ReactElement => {
+  const theme = useTheme();
   // TODO: calcular essa distância direito pq jesus..
   // FIXME: isso aqui era pra usar aquele page-title mas nao dava pra usar da mesma maneira então repeti o código. temos que melhorar isso
   return (
@@ -23,7 +23,7 @@ const EventDetailsSection = ({
           justifyContent: "flex-end",
           width: "325px",
           padding: "1rem",
-          background: colors.darkBlue,
+          background: theme.palette.primary.main,
           borderTopRightRadius: 50,
           borderBottomRightRadius: 50,
         }}

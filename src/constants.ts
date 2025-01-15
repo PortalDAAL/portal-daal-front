@@ -21,11 +21,6 @@ export const texts = {
   },
 };
 
-export const colors = {
-  primary: "#6aacd4",
-  darkBlue: "#013476",
-};
-
 export const routes = {
   root: "/",
   about: "/sobre",
