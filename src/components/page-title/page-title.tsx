@@ -1,5 +1,4 @@
-import { Box, Typography } from "@mui/material";
-import { colors } from "../../constants";
+import { Box, Typography, useTheme } from "@mui/material";
 
 type PageTitleOrientation = "flex-start" | "flex-end";
 
@@ -9,6 +8,7 @@ interface PageProps {
 }
 
 const PageTitle = ({ text, orientation }: PageProps) => {
+  const theme = useTheme();
   return (
     <Box
       sx={{
@@ -16,7 +16,7 @@ const PageTitle = ({ text, orientation }: PageProps) => {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: orientation,
-        backgroundColor: colors.darkBlue,
+        backgroundColor: theme.palette.primary.main,
         borderRadius: "20px",
         paddingY: "2rem",
         paddingX: "2rem",
