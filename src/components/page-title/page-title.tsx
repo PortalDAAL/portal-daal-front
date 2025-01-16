@@ -1,34 +1,38 @@
-import { Box, Typography, useTheme } from "@mui/material";
-
-type PageTitleOrientation = "flex-start" | "flex-end";
+import { Box, Typography } from "@mui/material";
 
 interface PageProps {
   text: string;
-  orientation: PageTitleOrientation;
+  urlImage : string;
 }
 
-const PageTitle = ({ text, orientation }: PageProps) => {
-  const theme = useTheme();
+const PageTitle = ({ text, urlImage }: PageProps) => {
   return (
     <Box
       sx={{
         display: "flex",
-        flexDirection: "row",
+        justifyContent: "center",
         alignItems: "center",
-        justifyContent: orientation,
-        backgroundColor: theme.palette.primary.main,
-        borderRadius: "20px",
-        paddingY: "2rem",
-        paddingX: "2rem",
-        width: "40%",
+        margin: "0",
+        position: "relative",
+        backgroundImage: `url(${urlImage})`,
+        backgroundSize: "contain",
+        width: "100%",
+        height: "44.01vh",
+        backgroundRepeat: "no-repeat",
       }}
     >
       <Typography
-        variant="h2"
-        color="white"
-        fontSize={30}
-        fontWeight={"bold"}
-        textTransform={"uppercase"}
+        color="#013476"
+        variant="h1"
+        fontFamily="Poppins"
+        textAlign="center"
+        letterSpacing="0.1em"
+        sx={{
+          WebkitTextStroke: "2px #013476",
+          fontSize: "2em",
+          fontWeight: "bold",
+          textTransform: "uppercase",
+        }}
       >
         {text}
       </Typography>

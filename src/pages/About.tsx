@@ -1,39 +1,16 @@
 import React from "react";
 import { Box, Divider } from "@mui/material";
 import MemberProfile from "../components/about/member-profile";
+import PageTitle from "../components/page-title/page-title";
+
 
 const About = (): React.ReactElement => {
   return (
     <div>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          margin: "0",
-          position: "relative",
-          backgroundImage: 'url("src/images/fundo_titulo_sobre.png")',
-          backgroundSize: "contain",
-          width: "100%",
-          height: "44.01vh",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <Box
-          sx={{
-            color: "#013476",
-            fontFamily: "poppins",
-            fontSize: "2em",
-            fontWeight: "bold",
-            textAlign: "center",
-            letterSpacing: "0.1em",
-            WebkitTextStroke: "2px #013476",
-          }}
-        >
-          CONHEÇA O DAAL
-        </Box>
-      </Box>
-
+      <PageTitle
+        text="Conheça o Daal"
+        urlImage="src/images/fundo_titulo_sobre.png"
+      />
       <div
         style={{
           marginTop: "10vh",
