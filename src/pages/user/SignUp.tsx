@@ -1,10 +1,9 @@
-import { Box, Card, CardContent, Typography, useTheme } from "@mui/material";
+import { Box, Card, CardContent, Typography } from "@mui/material";
 import SignUpForm from "../../components/forms/signup-form";
 import { Link } from "react-router-dom";
 import { routes } from "../../constants";
 
 const SignUp = (): React.ReactElement => {
-  const theme = useTheme();
   return (
     <Box
       sx={{
@@ -14,7 +13,17 @@ const SignUp = (): React.ReactElement => {
         height: "100%",
       }}
     >
-      <h1 style={{ color: theme.palette.primary.main }}>CRIAR CONTA</h1>
+      <Typography
+        variant="h4"
+        component="h1"
+        color="primary" /* Primary vem do tema que criamos, é equivalente a theme.palette.primary.main */
+        sx={{
+          marginY: "2rem",
+          fontWeight: 700,
+        }}
+      >
+        CRIAR CONTA
+      </Typography>
       <Card>
         <CardContent>
           <SignUpForm />
