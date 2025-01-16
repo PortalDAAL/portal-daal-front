@@ -19,34 +19,10 @@ const Events = (): React.ReactElement => {
 
   return (
     <div>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          margin: "0",
-          position: "relative",
-          backgroundImage: 'url("src/images/fundo_titulo_events1.jpeg")',
-          backgroundSize: "contain",
-          width: "100%",
-          height: "44.01vh",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <Box
-          sx={{
-            color: "#013476",
-            fontFamily: "poppins",
-            fontSize: "2em",
-            fontWeight: "bold",
-            textAlign: "center",
-            letterSpacing: "0.1em",
-            WebkitTextStroke: "2px #013476",
-          }}
-        >
-          EVENTOS
-        </Box>
-      </Box>
+      <PageTitle
+        text="Eventos"
+        urlImage="src/images/fundo_titulo_events1.jpeg"
+      />
       <Box marginTop={3}>
         <EventsSection title="Eventos abertos" data={openEvents} />
         <Divider sx={{ marginY: "3rem" }} />
