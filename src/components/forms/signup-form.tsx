@@ -13,6 +13,7 @@ import {
   TextField,
 } from "@mui/material";
 import { emailRegex } from "../../constants";
+import "./signup-form.styles.css";
 
 const SignUpForm = (): React.ReactElement => {
   const { login } = useUser();
@@ -108,7 +109,7 @@ const SignUpForm = (): React.ReactElement => {
       <form>
         <Box className="flex-column" sx={{ justifyContent: "center" }}>
           <Box className="flex-column">
-            <Box>
+            <Box className="input-row">
               <TextField
                 label="Nome"
                 variant="standard"
@@ -117,9 +118,6 @@ const SignUpForm = (): React.ReactElement => {
                 helperText={errors.name}
                 margin="dense"
                 onChange={(e) => handleChange("name", e.target.value)}
-                sx={{
-                  marginRight: "10px",
-                }}
               />
               <TextField
                 label="E-mail"
@@ -129,12 +127,9 @@ const SignUpForm = (): React.ReactElement => {
                 error={!!errors.email}
                 helperText={errors.email}
                 onChange={(e) => handleChange("email", e.target.value)}
-                sx={{
-                  marginLeft: "10px",
-                }}
               />
             </Box>
-            <Box>
+            <Box className="input-row">
               <TextField
                 label="Senha"
                 variant="standard"
@@ -143,9 +138,6 @@ const SignUpForm = (): React.ReactElement => {
                 error={!!errors.passwd}
                 helperText={errors.passwd}
                 onChange={(e) => handleChange("passwd", e.target.value)}
-                sx={{
-                  marginRight: "10px",
-                }}
               />
               <TextField
                 label="Confirmar senha"
@@ -155,22 +147,24 @@ const SignUpForm = (): React.ReactElement => {
                 error={!!errors.confirmPasswd}
                 helperText={errors.confirmPasswd}
                 onChange={(e) => handleChange("confirmPasswd", e.target.value)}
-                sx={{
-                  marginLeft: "10px",
-                }}
               />
             </Box>
             <Box marginTop="1rem" />
             <FormControl
               component="fieldset"
               error={!!errors.isFromIMD}
-              sx={{ alignSelf: "center" }}
+              sx={{
+                alignSelf: "center",
+              }}
             >
-              <FormLabel component="legend">Você é aluno do IMD?</FormLabel>
+              <FormLabel component="legend" sx={{ alignSelf: "center" }}>
+                Você é aluno do IMD?
+              </FormLabel>
               <RadioGroup
                 row
                 value={isFromIMD}
                 onChange={(e) => handleChange("isFromIMD", e.target.value)}
+                sx={{ alignSelf: "center" }}
               >
                 <FormControlLabel
                   value={"sim"}
@@ -183,10 +177,12 @@ const SignUpForm = (): React.ReactElement => {
                   label="Não"
                 />
               </RadioGroup>
-              {errors.isFromIMD && (
-                <FormHelperText error> {errors.isFromIMD} </FormHelperText>
-              )}
             </FormControl>
+            {errors.isFromIMD && (
+              <FormHelperText sx={{ alignSelf: "center" }} error>
+                {errors.isFromIMD}{" "}
+              </FormHelperText>
+            )}
             <Button variant="contained" onClick={handleClick} sx={{ my: 2 }}>
               Criar
             </Button>

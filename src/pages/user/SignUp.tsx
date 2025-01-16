@@ -11,6 +11,7 @@ const SignUp = (): React.ReactElement => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        height: "100%",
       }}
     >
       <h1 style={{ color: theme.palette.primary.main }}>CRIAR CONTA</h1>
