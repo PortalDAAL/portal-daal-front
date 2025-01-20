@@ -9,11 +9,12 @@ export function getFormattedDate(date: Date | string): string {
   if (!(date instanceof Date)) date = new Date(Date.parse(date));
 
   let day: string = date.getDate().toString();
-  if (day.length == 1) {
-    day = "0" + day;
-  }
+  let month: string = (date.getMonth() + 1).toString();
 
-  return `${day}/${date.getMonth() + 1}/${date.getFullYear()}`;
+  if (day.length == 1) day = "0" + day;
+  if (month.length == 1) month = "0" + month;
+
+  return `${day}/${month}/${date.getFullYear()}`;
 }
 
 export function getCompleteUrlFromImg(relativeUrl: string): string {
@@ -42,4 +43,23 @@ export function isNavRouteActive(
   if (currentRoute.includes(navRoute)) return true;
 
   return false;
+}
+
+export function hasValidDate(date: Date | string | undefined): boolean {
+  let parsedDate: Date;
+  console.log(date);
+
+  if (typeof date === "string") {
+    parsedDate = new Date(date);
+
+    if (isNaN(parsedDate.getTime())) {
+      return false;
+    }
+  } else if (date instanceof Date) {
+    parsedDate = date;
+  } else {
+    return false;
+  }
+
+  return parsedDate !== undefined && parsedDate.getTime() > Date.now();
 }
