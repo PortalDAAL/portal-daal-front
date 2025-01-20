@@ -1,8 +1,7 @@
 import { Event } from "../../models/Event";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import EventCard from "./event-card";
 import { getCompleteUrlFromImg, getFormattedDate } from "../../helpers";
-import { colors } from "../../constants";
 
 interface EventsSectionProps {
   title: string;
@@ -10,6 +9,7 @@ interface EventsSectionProps {
 }
 
 const EventsSection = ({ title, data }: EventsSectionProps) => {
+  const theme = useTheme();
   const hasEvents: boolean = data !== undefined && data.length > 0;
 
   return (
@@ -28,7 +28,7 @@ const EventsSection = ({ title, data }: EventsSectionProps) => {
           marginBottom: "1rem",
           textTransform: "uppercase",
           fontWeight: "bold",
-          color: colors.darkBlue,
+          color: theme.palette.primary.main,
         }}
       >
         {title}

@@ -13,17 +13,14 @@ export const api = {
   },
 };
 
+export const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{1,}$/;
+
 export const texts = {
   bold: 700,
   color: {
     primary: "#0089e4",
     secondary: "#e9791a",
   },
-};
-
-export const colors = {
-  primary: "#6aacd4",
-  darkBlue: "#013476",
 };
 
 export const routes = {

@@ -30,7 +30,7 @@ const Events = (): React.ReactElement => {
       <Box marginTop={3}>
         <EventsSection title="Eventos abertos" data={openEvents} />
         <Divider sx={{ marginY: "3rem" }} />
-        <EventsSection title="Eventos fechados" data={closedEvents} />
+        <EventsSection title="Eventos encerrados" data={closedEvents} />
       </Box>
     </div>
   );

@@ -15,12 +15,12 @@ const EventDetailsHeader = ({
 }: EventDetailsHeaderProps): React.ReactElement => {
   return (
     <div className="container">
-      <Box className="flex-row header-wrapper" sx={{ marginY: 3, gap: "1rem" }}>
+      <Box className="flex-row header-wrapper" sx={{ marginY: 3 }}>
         {
           event.poster && (
             <img
               className="header-img"
-              style={{ maxWidth: "50%" }}
+              style={{ maxWidth: "50vw" }}
               src={getCompleteUrlFromImg(event.poster.url)}
               alt={"Foto do evento " + event.poster.name}
             ></img>

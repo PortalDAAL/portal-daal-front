@@ -1,7 +1,7 @@
-import { Avatar, Box, Typography } from "@mui/material";
+import { Avatar, Box, Typography, useTheme } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
-import { colors, routes } from "../../constants";
+import { routes } from "../../constants";
 import "./event-card.styles.css";
 
 interface EventCardProps {
@@ -21,7 +21,9 @@ const EventCard = ({
   imgUrl,
   imgAltText,
 }: EventCardProps): React.ReactElement => {
-  const colorFont: string = isOpen ? colors.darkBlue : "white";
+  const theme = useTheme();
+
+  const colorFont: string = isOpen ? "white" : theme.palette.primary.main;
   const route: string = routes.eventDetails.replace(":slug", id);
 
   return (
@@ -37,9 +39,9 @@ const EventCard = ({
       <Box
         className="card"
         sx={{
-          bgcolor: isOpen ? "white" : colors.primary,
+          bgcolor: isOpen ? theme.palette.primary.main : "white",
           borderRadius: 5,
-          borderColor: isOpen ? colors.darkBlue : "white",
+          borderColor: isOpen ? "white" : theme.palette.primary.main,
         }}
       >
         <Box className="card-info">

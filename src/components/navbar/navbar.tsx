@@ -1,51 +1,41 @@
-import HomeIcon from "@mui/icons-material/Home";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
-import EventRoundedIcon from "@mui/icons-material/EventRounded";
-import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
-import { Avatar, Box, Button, Typography } from "@mui/material";
-import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Avatar, Box, Button, Typography, useTheme } from "@mui/material";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../../UserContext";
-import { colors, routes } from "../../constants";
+import { routes } from "../../constants";
 import "./navbar.styles.css";
-import { blue } from "@mui/material/colors";
 import { isNavRouteActive } from "../../helpers";
+import UserAvatarButton from "../buttons/user-avatar-button";
 
-// TODO: remover propriedade "icon" se não for mais utilizada em nenhum momento.
 interface NavbarItem {
   label: string;
   route: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  icon?: any;
 }
 
 const useNavbarItems = (): Array<NavbarItem> => {
   return [
-    { label: "Início", route: routes.root, icon: <HomeIcon /> },
+    { label: "Início", route: routes.root },
     {
       label: "Manual do Aluno",
       route: routes.guide,
-      icon: <MenuBookIcon />,
     },
     {
       label: "Eventos",
       route: routes.events,
-      icon: <EventRoundedIcon />,
     },
     {
       label: "Sobre",
       route: routes.about,
-      icon: <InfoRoundedIcon />,
     },
   ];
 };
 
 const Navbar = (): React.ReactElement => {
+  const theme = useTheme();
   const { user } = useUser();
   const navbarItems = useNavbarItems();
   const navigate = useNavigate();
   const location = useLocation();
 
-  // TODO: criar classes css para esses estilos mais comuns de flex?
   return (
     <>
       <Box
@@ -56,9 +46,9 @@ const Navbar = (): React.ReactElement => {
           justifyContent: "space-evenly",
           alignItems: "center",
           gap: "20px",
-          marginBottom: "2rem",
+          marginBottom: "1rem",
           paddingY: "1rem",
-          backgroundColor: colors.primary,
+          backgroundColor: theme.palette.secondary.main,
         }}
       >
         <Link to={routes.root} className="navbar-link">
@@ -106,9 +96,7 @@ const Navbar = (): React.ReactElement => {
         </Box>
 
         {user ? (
-          <Avatar sx={{ bgcolor: blue[900] }}>
-            {user.username.charAt(0).toUpperCase()}
-          </Avatar>
+          <UserAvatarButton letter={user.username.charAt(0).toUpperCase()} />
         ) : (
           <Button
             variant="contained"
@@ -121,7 +109,6 @@ const Navbar = (): React.ReactElement => {
           </Button>
         )}
       </Box>
-      <Outlet />
     </>
   );
 };
