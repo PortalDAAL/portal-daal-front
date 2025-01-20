@@ -1,5 +1,3 @@
-import { Event } from "./Event";
-
 export interface User {
   readonly documentId: string;
   readonly id: number;
@@ -9,11 +7,12 @@ export interface User {
   updatedAt?: Date;
   blocked: boolean;
   token?: string;
-  events?: Event[];
+  eventIds?: string[];
 }
 
 export interface UserContextType {
   user: User | null;
   login: (info: User) => void;
   logout: () => void;
+  subscribe: (eventId: string) => void;
 }

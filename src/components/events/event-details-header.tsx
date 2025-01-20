@@ -19,7 +19,6 @@ const EventDetailsHeader = ({
 }: EventDetailsHeaderProps): React.ReactElement => {
   const isEndDateNotPassed: boolean = hasValidDate(event.end_inscriptions);
   const isDateNotPassed: boolean = hasValidDate(event.date);
-
   const isEventAvailable: boolean =
     (isEndDateNotPassed || isDateNotPassed) && event.active;
 

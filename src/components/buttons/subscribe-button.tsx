@@ -2,7 +2,6 @@ import { ButtonOwnProps, SxProps } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import React, { useState } from "react";
 import { useUser } from "../../UserContext";
-import { Actions } from "../../actions/actions";
 
 interface SubscribeButtonProps {
   label: string;
@@ -19,30 +18,33 @@ const SubscribeButton = ({
   className,
   sx,
 }: SubscribeButtonProps): React.ReactElement => {
-  // TODO: se user já tiver se inscrito, desabilitar botão
-  const { user } = useUser();
+  const { user, subscribe } = useUser();
   const [loading, setLoading] = useState<boolean>(false);
 
-  // TODO: implementar operação de vincular usuário a evento
+  const isUserInscripted: boolean | undefined = user?.eventIds?.some(
+    (e) => e === eventId
+  );
+
   const handleClick = (): void => {
     if (user) {
       setLoading(true);
-      Actions.subscribeUserOnEvent(eventId, user)
-        .then((res) => console.log(res))
-        .catch((err) => console.error(err));
-      setLoading(false);
+      setTimeout(() => {
+        subscribe(eventId);
+        setLoading(false);
+      }, 1000);
     }
   };
 
   return (
     <LoadingButton
       className={className ?? ""}
+      disabled={isUserInscripted}
       sx={{ textTransform: "uppercase", ...sx }}
       variant={variant}
       onClick={handleClick}
       loading={loading}
     >
-      {label}
+      {isUserInscripted ? "Já inscrito" : label}
     </LoadingButton>
   );
 };
