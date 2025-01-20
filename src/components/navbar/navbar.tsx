@@ -3,8 +3,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../../UserContext";
 import { routes } from "../../constants";
 import "./navbar.styles.css";
-import { blue } from "@mui/material/colors";
 import { isNavRouteActive } from "../../helpers";
+import UserAvatarButton from "../buttons/user-avatar-button";
 
 interface NavbarItem {
   label: string;
@@ -96,9 +96,7 @@ const Navbar = (): React.ReactElement => {
         </Box>
 
         {user ? (
-          <Avatar sx={{ bgcolor: blue[900] }}>
-            {user.username.charAt(0).toUpperCase()}
-          </Avatar>
+          <UserAvatarButton letter={user.username.charAt(0).toUpperCase()} />
         ) : (
           <Button
             variant="contained"
