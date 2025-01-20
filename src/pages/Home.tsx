@@ -151,7 +151,7 @@ const Home = (): React.ReactElement => {
         />
         <Typography
           variant="body1"
-          sx={{ maxWidth: "550px", textAlign: "justify", marginTop: "40px" }}
+          sx={{ maxWidth: "550px", textAlign: "justify", marginTop: "40px", marginBottom:"80px" }}
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non
           risus orci. Integer aliquam dignissim orci a pulvinar. Vivamus turpis

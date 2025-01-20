@@ -19,15 +19,11 @@ const Events = (): React.ReactElement => {
   const closedEvents: Event[] = events.filter((e) => !hasValidDate(e.date));
 
   return (
-    <div className="container">
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "flex-end",
-        }}
-      >
-        <PageTitle text="Eventos" orientation="flex-start" />
-      </Box>
+    <div>
+      <PageTitle
+        text="Eventos"
+        urlImage="src/images/fundo_titulo_events1.jpeg"
+      />
       <Box marginTop={3}>
         <EventsSection title="Eventos abertos" data={openEvents} />
         <Divider sx={{ marginY: "3rem" }} />
