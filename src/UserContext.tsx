@@ -28,8 +28,21 @@ export const UserProvider = ({
     setUser(null);
   };
 
+  const subscribe = (eventId: string): void => {
+    if (user) {
+      const eventDoNotExists = !user.eventIds?.some((e) => e === eventId);
+
+      if (eventDoNotExists) {
+        setUser({
+          ...user,
+          eventIds: [...(user.eventIds || []), eventId],
+        });
+      }
+    }
+  };
+
   return (
-    <UserContext.Provider value={{ user, login, logout }}>
+    <UserContext.Provider value={{ user, login, logout, subscribe }}>
       {children}
     </UserContext.Provider>
   );

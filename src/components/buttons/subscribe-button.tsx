@@ -5,6 +5,7 @@ import { useUser } from "../../UserContext";
 
 interface SubscribeButtonProps {
   label: string;
+  eventId: string;
   variant: ButtonOwnProps["variant"];
   className?: string;
   sx?: SxProps;
@@ -12,32 +13,38 @@ interface SubscribeButtonProps {
 
 const SubscribeButton = ({
   label,
+  eventId,
   variant,
   className,
   sx,
 }: SubscribeButtonProps): React.ReactElement => {
-  // TODO: se user já tiver se inscrito, desabilitar botão
-  const { user } = useUser();
+  const { user, subscribe } = useUser();
   const [loading, setLoading] = useState<boolean>(false);
 
-  // TODO: implementar operação de vincular usuário a evento
+  const isUserInscripted: boolean | undefined = user?.eventIds?.some(
+    (e) => e === eventId
+  );
+
   const handleClick = (): void => {
-    setLoading(true);
-    setTimeout(async () => {
-      console.log(user);
-      setLoading(false);
-    }, 5000);
+    if (user) {
+      setLoading(true);
+      setTimeout(() => {
+        subscribe(eventId);
+        setLoading(false);
+      }, 1000);
+    }
   };
 
   return (
     <LoadingButton
       className={className ?? ""}
+      disabled={isUserInscripted}
       sx={{ textTransform: "uppercase", ...sx }}
       variant={variant}
       onClick={handleClick}
       loading={loading}
     >
-      {label}
+      {isUserInscripted ? "Já inscrito" : label}
     </LoadingButton>
   );
 };

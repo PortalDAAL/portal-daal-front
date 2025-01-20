@@ -30,13 +30,14 @@ export class Actions {
     passwd: string
   ): Promise<User | null> {
     try {
-      const res = await axios.post(api.login.url, {
+      const res = await axios.post(api.login.url + "?populate=*", {
         identifier: email,
         password: passwd,
       });
       console.log(res);
       return {
         id: res.data.user.id,
+        documentId: res.data.user.documentId,
         username: res.data.user.username,
         email: res.data.user.email,
         blocked: res.data.user.blocked,
@@ -78,5 +79,30 @@ export class Actions {
       console.error(err);
       return null;
     }
+  }
+
+  public static async subscribeUserOnEvent(
+    eventId: string,
+    user: User
+  ): Promise<boolean> {
+    console.log(eventId);
+    console.log(user);
+    // FIXME: ver porque o campo "users" não está sendo reconhecido...
+    const res = await axios.put(
+      `${api.events.url}/${eventId}`,
+      {
+        data: {
+          users: {
+            connect: [user.documentId],
+          },
+        },
+      },
+      {
+        headers: { Authorization: `Bearer ${user.token}` },
+      }
+    );
+
+    console.log(res);
+    return false;
   }
 }

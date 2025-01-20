@@ -4,18 +4,19 @@ import PageTitle from "../components/page-title/page-title";
 import { Actions } from "../actions/actions";
 import { Event } from "../models/Event";
 import EventsSection from "../components/events/events-section";
+import { hasValidDate } from "../helpers";
 
 const Events = (): React.ReactElement => {
   const [events, setEvents] = useState<Event[]>([]);
 
   useEffect(() => {
     Actions.getEvents()
-      .then((events) => setEvents(events ?? [])) // o operador ?? diz que se events for nulo, use []
+      .then((events) => setEvents(events ?? []))
       .catch((err) => console.error(err));
   }, []);
 
-  const openEvents: Event[] = events.filter((e) => e.active);
-  const closedEvents: Event[] = events.filter((e) => !e.active);
+  const openEvents: Event[] = events.filter((e) => hasValidDate(e.date));
+  const closedEvents: Event[] = events.filter((e) => !hasValidDate(e.date));
 
   return (
     <div>
