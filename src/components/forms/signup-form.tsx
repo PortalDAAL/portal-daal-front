@@ -11,9 +11,11 @@ import {
   Radio,
   RadioGroup,
   TextField,
+  Typography,
 } from "@mui/material";
-import { emailRegex } from "../../constants";
+import { emailRegex, routes } from "../../constants";
 import "./signup-form.styles.css";
+import { Link } from "react-router-dom";
 
 const SignUpForm = (): React.ReactElement => {
   const { login } = useUser();
@@ -187,6 +189,20 @@ const SignUpForm = (): React.ReactElement => {
               Criar
             </Button>
           </Box>
+          <Typography variant="subtitle1" textAlign={"center"}>
+            Já tem uma conta? Faça seu login clicando
+            <Link
+              to={routes.login}
+              style={{
+                textDecoration: "none",
+                color: "black",
+              }}
+            >
+              {" "}
+              aqui
+            </Link>
+            .
+          </Typography>
         </Box>
       </form>
     </>
