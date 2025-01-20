@@ -37,7 +37,7 @@ const About = (): React.ReactElement => {
         >
           <Box
             sx={{
-              width: "45vw",
+              width: "40vw",
             }}
           >
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque,
