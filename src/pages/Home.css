@@ -1,0 +1,35 @@
+@media only screen and (max-width : 1045px) {
+    .imgInicio {
+      display: none !important;
+    }
+    .imgHome {
+        margin-bottom: 0 !important;
+      }
+}
+
+@media only screen and (max-width : 700px) {
+    .exploreIMD {
+      background-image:none !important;
+      background-color: #6aacd4;
+    }
+    .titleExplore {
+        text-align: center !important;
+        font-size: 27px !important;
+    }
+    .exploreText{
+        margin-left: 30px !important;
+    }
+    .textExplore {
+        width: calc(100% - 60px) !important;
+        font-size: 15px !important;
+    }
+    .title-two-Explore {
+        font-size: 22px !important;
+    }
+}
+
+@media only screen and (max-width : 1100px) {
+    .dividerHome{
+      width: calc(100% - 60px) !important;
+    }
+}
