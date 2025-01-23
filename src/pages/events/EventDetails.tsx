@@ -53,12 +53,12 @@ const EventDetails = (): React.ReactElement => {
               <EventDetailsSection
                 title={"Descrição"}
                 data={event.description}
-                sx={{ marginBottom: 5 }}
+                sx={{ marginBottom: 5, textAlign:"justify"}}
               />
               <EventDetailsSection
                 title={"Observações"}
                 data={event.description}
-                sx={{ marginY: 5 }}
+                sx={{ marginY: 5, textAlign:"justify"}}
               />
             </>
           ) : (
