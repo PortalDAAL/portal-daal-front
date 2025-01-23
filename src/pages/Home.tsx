@@ -129,7 +129,7 @@ const Home = (): React.ReactElement => {
           flexDirection: "column",
           alignItems: "flex-start",
           width: "100%",
-          marginLeft: "20vw",
+  
           position: "relative",
         }}
       >
@@ -143,6 +143,7 @@ const Home = (): React.ReactElement => {
             marginBottom: "10px",
             marginTop: "120px",
             maxWidth: "600px",
+            marginLeft: "15vw",
           }}
         >
           O QUE VOCÊ IRÁ ENCONTRAR AQUI
@@ -150,7 +151,7 @@ const Home = (): React.ReactElement => {
         <Box
           className="dividerHome"
           sx={{
-            width: "50vw",
+            width: "calc(550px + 15vw)",
             height: "3px",
             backgroundColor: "#013476",
             position: "absolute",
@@ -161,7 +162,7 @@ const Home = (): React.ReactElement => {
         <Typography
           className="textExplore"
           variant="body1"
-          sx={{ maxWidth: "550px", textAlign: "justify", marginTop: "40px", marginBottom:"80px" }}
+          sx={{ maxWidth: "550px", textAlign: "justify", marginTop: "40px", marginBottom:"80px", marginLeft: "15vw", }}
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non
           risus orci. Integer aliquam dignissim orci a pulvinar. Vivamus turpis
