@@ -1,12 +1,14 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import { Button } from "@mui/material";
+import "./Home.css";
 //import { useUser } from "../UserContext";
 
 const Home = (): React.ReactElement => {
   return (
     <div>
-      <div
+      <div  
+        className="imgHome"
         style={{
           display: "flex",
           alignItems: "center",
@@ -35,7 +37,8 @@ const Home = (): React.ReactElement => {
           >
             PORTAL
           </Typography>
-          <img
+          <img 
+            className="imgDaal"
             src="src/images/nomedaal.png"
             alt="Logo Daal"
             style={{ width: "300px", height: "auto" }}
@@ -45,13 +48,15 @@ const Home = (): React.ReactElement => {
           </Typography>
         </div>
         <img
+          className="imgInicio"
           src="src/images/inicio1.png"
           alt="Foto Inicial"
-          style={{ width: "450px", height: "auto", marginLeft: "100px" }}
+          style={{ width: "400px", height: "auto", marginLeft: "100px" }}
         />
       </div>
 
       <div
+        className="exploreIMD"
         style={{
           display: "flex",
           flexDirection: "column",
@@ -66,6 +71,7 @@ const Home = (): React.ReactElement => {
         }}
       >
         <Typography
+          className="titleExplore"
           variant="h2"
           sx={{
             color: "white",
@@ -117,16 +123,18 @@ const Home = (): React.ReactElement => {
         </Button>
       </div>
       <div
+        className="exploreText"
         style={{
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-start",
           width: "100%",
-          paddingLeft: "250px",
+          marginLeft: "20vw",
           position: "relative",
         }}
       >
         <Typography
+          className="title-two-Explore"
           variant="h2"
           sx={{
             color: "#339edd",
@@ -140,8 +148,9 @@ const Home = (): React.ReactElement => {
           O QUE VOCÊ IRÁ ENCONTRAR AQUI
         </Typography>
         <Box
+          className="dividerHome"
           sx={{
-            width: "800px",
+            width: "50vw",
             height: "3px",
             backgroundColor: "#013476",
             position: "absolute",
@@ -150,6 +159,7 @@ const Home = (): React.ReactElement => {
           }}
         />
         <Typography
+          className="textExplore"
           variant="body1"
           sx={{ maxWidth: "550px", textAlign: "justify", marginTop: "40px", marginBottom:"80px" }}
         >
