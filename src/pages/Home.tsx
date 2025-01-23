@@ -129,21 +129,21 @@ const Home = (): React.ReactElement => {
         <Typography
           variant="h2"
           sx={{
-            color: "#013476",
+            color: "#339edd",
             fontWeight: "bold",
-            fontSize: "35px",
+            fontSize: "30px",
             marginBottom: "10px",
             marginTop: "120px",
             maxWidth: "600px",
           }}
         >
-          O que você irá encontrar aqui
+          O QUE VOCÊ IRÁ ENCONTRAR AQUI
         </Typography>
         <Box
           sx={{
             width: "800px",
             height: "3px",
-            backgroundColor: "#6aacd4",
+            backgroundColor: "#013476",
             position: "absolute",
             left: 0,
             top: "calc(120px + 35px + 10px)",

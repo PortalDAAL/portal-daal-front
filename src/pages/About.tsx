@@ -80,6 +80,7 @@ const About = (): React.ReactElement => {
             fontFamily: "Poppins",
             fontWeight: "bold",
             marginLeft: "10%",
+            marginTop: "2.5%",
             fontSize: "1.5rem",
           }}
         >
